@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.wn.mapper.StudentHomeworkMapper">
+ 	<select id="findAll" resultType="com.wn.model.StudentHomework" >
+ 		select sh.*,a.username from studentHomework sh,account a 
+ 		where sh.account_id = a.id order by sh.id desc
+ 		limit #{page.startNum},#{page.numPerPage}
+ 	</select>
+ 	<insert id="insertStudentHomework" parameterType="com.wn.model.StudentHomework">
+ 		insert into studentHomework (account_id,day,line) values(#{account_id},#{day},#{line})
+ 	</insert>
+ 	<select id="findAccountBySid" resultType="com.wn.model.StudentHomework">
+ 		select * from studentHomework where account_id = #{sid}
+ 	</select>
+ 	<!-- 查询总条数 -->
+ 	<select id="totalCont"  resultType="java.lang.Integer">
+ 		select count(*) count from studentHomework 
+ 	</select>
+ 	<!-- 姓名模糊查询总条数 -->
+ 	<select id="totalContLike"  resultType="java.lang.Integer">
+ 		select count(*) from studentHomework sh,account a
+ 		where sh.account_id = a.id 
+ 			<if test="username != null">
+ 				and a.username like "%"#{username}"%"
+ 		
+ 		</if>
+ 			<if test="serchClass != null">
+		 		and a.classes = #{serchClass}
+ 			</if>
+ 	</select>
+ 	<!-- 姓名模糊查询 -->
+ 	<select id="findLikeName" resultType="com.wn.model.StudentHomework">
+ 		select sh.*,a.username from studentHomework sh,account a 
+ 		where sh.account_id = a.id 
+ 		<if test="username != null">
+ 			and  a.username like "%"#{username}"%"
+ 		</if>
+ 		<if test="serchClass!=null">
+ 			and a.classes = #{serchClass}
+ 		</if> 
+ 		order by sh.id desc
+ 		limit #{page.startNum},#{page.numPerPage}
+ 	</select>
+ 	
+ 	<!-- 学生总行数 -->
+ 	<select id="findAllLine"  resultType="com.wn.model.StudentHomework">
+ 		select sh.*,a.username,sum(sh.line) as allLine from studentHomework sh,account a 
+ 		where sh.account_id = a.id GROUP BY sh.account_id
+ 		order by sh.id desc
+ 		limit #{page.startNum},#{page.numPerPage}
+ 	</select>
+ 	<!-- 姓名模糊查询整体 -->
+ 	<select id="findAllLineLikeName" resultType="com.wn.model.StudentHomework">
+ 		select sh.*,a.username,sum(sh.line) as allLine from studentHomework sh,account a 
+ 		where sh.account_id = a.id 
+ 		<if test="username != null">
+ 			and  a.username like "%"#{username}"%"
+ 		</if>
+ 		<if test="serchClass!=null">
+ 			and a.classes = #{serchClass}
+ 		</if>  GROUP BY sh.account_id 
+ 		order by sh.id desc
+ 		limit #{page.startNum},#{page.numPerPage}
+ 	</select>
+ 	<!-- 姓名模糊查询总条数 -->
+ 	<select id="totalAllContLike"  resultType="java.lang.Integer">
+ 	select count(*) from (
+ 		select 1  from studentHomework sh,account a 
+ 		where sh.account_id = a.id
+		<if test="username != null">
+ 			and  a.username like "%"#{username}"%"
+ 		</if>
+ 		<if test="serchClass!=null">
+ 			and a.classes = #{serchClass}
+ 		</if> 
+	 	GROUP BY sh.account_id) as count 
+ 	</select>
+ 	
+ 	<!-- 学生总行数 -->
+ 	<select id="findAllLineCount" resultType="java.lang.Integer">
+ 		select count(*) from (
+			select 1 from studentHomework sh,account a 
+ 			where sh.account_id = a.id GROUP BY sh.account_id) as count
+ 	</select>
+ </mapper>

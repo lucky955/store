@@ -1,0 +1,29 @@
+
+<div class="pageContent">
+	<form method="post" action="demo/common/ajaxDone.html" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this);">
+		<div class="pageFormContent" layoutH="56">
+			<div class="unit">
+				<label>涓婁紶鍗曚釜鏂囦欢锛�</label>
+
+				<div class="upload-wrap">
+					<div class="thumbnail"></div>
+					<input type="file" name="file1" accept="image/*">
+				</div>
+			</div>
+			<div class="unit">
+				<label>涓婁紶澶氫釜鏂囦欢锛�</label>
+				<ul id="upload-preview" class="upload-preview"></ul>
+				<div class="upload-wrap" rel="#upload-preview">
+					<input type="file" name="file2" accept="image/*" multiple="multiple">
+				</div>
+			</div>
+
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">鎻愪氦</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">鍙栨秷</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

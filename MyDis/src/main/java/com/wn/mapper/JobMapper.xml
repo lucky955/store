@@ -1,0 +1,117 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置对应的mapper映射文件 -->
+<mapper namespace="com.wn.mapper.JobMapper">
+    
+    <insert  id="addJob" parameterType="com.wn.model.Job">
+   		insert into job (id,s_id,s_name,s_sex,s_city,s_company,s_school,s_education,s_major,s_post,s_graduationtime,s_salary,s_employmenttime)
+   		values
+   		(#{id},#{s_id},#{s_name},#{s_sex},#{s_city},#{s_company},#{s_school},#{s_education},#{s_major},#{s_post},#{s_graduationtime},#{s_salary},#{s_employmenttime})
+    </insert>
+    
+    <delete id="DeleteJobInfor">
+    	delete from job
+    </delete>
+    
+    <select id="all" resultType="com.wn.model.Job">
+ 		select * from job j,job_img i where j.s_name = i.s_name
+ 	</select>
+    
+    <select id="queryJob" resultType="com.wn.model.Job" parameterType="com.wn.model.Pages">
+ 		select * from job limit #{startNum},#{numPerPage}
+ 	</select>
+ 	
+ 	<!-- 通过s_id找出信息 -->
+ 	<select id="queryJobByS_id" resultType="com.wn.model.Job">
+ 		select * from job where id = #{id}
+ 	</select>
+ 	
+ 	<!-- 通过s_id修改信息 -->
+ 	<update id="UpdateJobInfor" parameterType="com.wn.model.Job">
+ 		update job set s_id = #{s_id}, s_name = # {s_name} , s_sex = #{s_sex} , s_city = #{s_city},s_company=#{s_company},s_school=#{s_school},s_education=#{s_education},s_major=#{s_major},s_post={s_post},
+ 		s_graduationtime=#{s_graduationtime},s_salary=#{s_salary},s_employmenttime=#{s_employmenttime} where id = #{id}
+ 	</update>
+ 	
+ 	
+ 	<select id="quertJobByElement" resultType="com.wn.model.Job" parameterType="com.wn.model.Job">
+ 		select * from job where 1 = 1
+ 			<if test="s_id != null">
+ 				and s_id = #{s_id}
+ 			</if>
+ 			<if test="s_name != null">
+ 				and s_name = #{s_name}
+ 			</if>
+ 			<if test="s_sex != null">
+ 				and s_sex = #{s_sex}
+ 			</if>
+ 			<if test="s_city != null">
+ 				and s_city = #{s_city}
+ 			</if>
+ 			<if test="s_company != null">
+ 				and s_company = #{s_company}
+ 			</if>
+ 			<if test="s_school != null">
+ 				and s_school = #{s_school}
+ 			</if>
+ 			<if test="s_education != null">
+ 				and s_education = #{s_education}
+ 			</if>
+ 			<if test="s_major != null">
+ 				and s_major = #{s_major}
+ 			</if>
+ 			<if test="s_post != null">
+ 				and s_post = #{s_post}
+ 			</if>
+ 			<if test="s_graduationtime != null">
+ 				and s_graduationtime = #{s_graduationtime}
+ 			</if>
+ 			<if test="s_salary != null">
+ 				and s_salary = #{s_salary}
+ 			</if>
+ 	</select>
+ 	
+ 	<update id="updateJob" parameterType="com.wn.model.Job">
+ 		update job
+ 		<trim prefix="set" suffixOverrides=",">
+ 			<if test="s_id !=null">
+ 				s_id=#{s_id},
+ 			</if>
+ 			<if test="s_name != null">
+ 				s_name=#{s_name},
+ 			</if>
+ 			<if test="s_sex !=null">
+ 				s_sex=#{s_sex},
+ 			</if>
+ 			<if test="s_city !=null">
+ 				s_city=#{s_city},
+ 			</if>
+ 			<if test="s_company !=null">
+ 				s_company=#{s_company},
+ 			</if>
+ 			<if test="s_school !=null">
+ 				s_school=#{s_school},
+ 			</if>
+ 			<if test="s_education !=null">
+ 				s_education=#{s_education},
+ 			</if>
+ 			<if test="s_major !=null">
+ 				s_major=#{s_major},
+ 			</if>
+ 			<if test="s_post !=null">
+ 				s_post=#{s_post},
+ 			</if>
+ 			<if test="s_graduationtime !=null">
+ 				s_graduationtime=#{s_graduationtime},
+ 			</if>
+ 			<if test="s_salary !=null">
+ 				s_salary=#{s_salary},
+ 			</if>
+ 		</trim>
+ 		<where>
+ 			id = #{id}
+ 		</where>
+ 	</update>
+    
+    <select id="totalCount" resultType="integer">
+ 		select count(id) from job
+ 	</select>
+</mapper>

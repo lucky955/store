@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.wn.mapper.TeacherMapper">
+ 	<select id="find" resultType="com.wn.model.Teacher" parameterType="com.wn.model.Pages">
+ 		select * from teacher order by id desc limit #{startNum},#{numPerPage}
+ 	</select>
+ 	<select id="all" resultType="com.wn.model.Teacher" >
+ 		select * from teacher where t_type=#{type}
+ 	</select>
+ 	<select id="findSomeOne" resultType="com.wn.model.Teacher" parameterType="com.wn.model.Teacher">
+ 		select * from teacher where 1 = 1
+ 			<if test="id != null">
+ 				and id = #{id}
+ 			</if>
+ 			<if test="t_name != null">
+ 				and t_name = #{t_name}
+ 			</if>
+ 			<if test="t_type != null">
+ 				and t_type = #{t_type}
+ 			</if>
+ 			<if test="t_phone != null">
+ 				and t_phone = #{t_phone}
+ 			</if>
+ 			<if test="t_img != null">
+ 				and t_img = #{t_img}
+ 			</if>
+ 	</select>
+ 	<!-- 查询教学方向 -->
+ 	<select id="findSome" resultType="com.wn.model.Teacher" >
+ 		select * from teacher where 1 = 1 
+ 		<if test="type != null">
+	 		and t_type=#{type} 
+ 		</if>
+ 		limit #{page.startNum},#{page.numPerPage}
+ 	</select>
+ 	
+ 	
+ 	<update id="updateTeacher" parameterType="com.wn.model.Teacher">
+ 		update teacher
+ 		<trim prefix="set" suffixOverrides=",">
+ 			<if test="t_name!=null">
+ 				t_name=#{t_name},
+ 			</if>
+ 			<if test="t_type != null">
+ 				t_type=#{t_type},
+ 			</if>
+ 			<if test="t_phone!=null">
+ 				t_phone=#{t_phone},
+ 			</if>
+ 			<if test="t_img!=null">
+ 				t_img=#{t_img},
+ 			</if>
+ 		</trim>
+ 		<where>
+ 			id = #{id}
+ 		</where>
+ 	</update>
+ 	
+ 	<insert id="insertTeacher" parameterType="com.wn.model.Teacher">
+ 		insert into teacher (t_name,t_type,t_phone,t_img) values (#{t_name},#{t_type},#{t_phone},#{t_img})
+ 	</insert>
+ 	
+ 	<select id="totalCount" resultType="integer">
+ 		select count(id) from teacher where 1=1
+ 		<if test="type != null">
+ 			and t_type = #{type}
+ 		</if>
+ 	</select>
+ 	
+
+ 	
+<!--  	<resultMap type="com.wn.model.Teacher" id="rota">
+    	<id column="id" property="id"/>
+	    	<result  column="t_name" property="t_name"/>
+	    	<result  column="t_type" property="t_type"/>
+	    	<result  column="t_phone" property="t_phone"/>
+	    	<result  column="t_img" property="t_img"/>
+		    <association property="tr" javaType="com.wn.model.TeacherRota">
+		    	<id column="id" property="id"/>
+		    	<result  column="t_name" property="t_name"/>
+		    	<result  column="t_phone" property="t_phone"/>
+		    	<result  column="t_day" property="t_day"/>
+		    </association>
+	</resultMap> -->
+	
+ 	<select id="getrota" resultType="com.wn.model.Teacher">
+ 		select t.*,r.* from teacher t,teacher_rota r where t.t_name=r.t_name
+ 	</select>
+ 	
+ 	<delete id="DeleteTeacher">
+ 		delete from teacher where id = #{id}
+ 	</delete>
+ 	
+ 	<select id="QueryOne" resultType="com.wn.model.Teacher">
+ 		select * from teacher where id = #{id}
+ 	</select>
+ </mapper>

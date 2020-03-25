@@ -1,0 +1,33 @@
+*{margin:0; padding:0}
+ul {list-style: none}
+.box {width: 99%;height: 650px;border:0px red solid;}
+.inner {width: 99%;height: 170px;overflow: hidden;position: relative;}
+.inner ul {height: 500%;position: absolute;top: 0; left: 0;}
+.inner li {float: left;}
+#employ li div{width: 1000px;height: 230px;vertical-align:top}
+td{padding: 3px 3px};
+.partmove{width: 99.19%;height: 286px;border: 1px solid #ccc;}
+.partcn{width: 99.19%; height: 100%;overflow: hidden;position: relative;}
+.partcn ul {width:500%;position: absolute;top: 0; left: 0;}
+.partcn li { float: left;}
+
+#main{width: 100%;float: left; height: auto; position: absolute;overflow: hidden;background-color: #ADEBBA}
+
+#top_left{position: relative; width: 29%; height: 5%; float: left;}
+
+#top_right{width: 50%; height: 5%; float: left; position: relative; left: 1%;}
+
+#times{width:21%; height:5%; float: left; position: relative; font-size: 2em; text-align: center; line-height: 2em;}
+
+#collage{width: 27%;height: 22.5%;float: left;padding: 1em;text-indent: 2em;position: relative; top: 1%;background-color: #82C18F;font-size: 1.5em;line-height: 2em;border-radius: 15px 50px;box-shadow: 5px 5px 5px black;}
+
+#classes{width: 37%;height: 23.5%;float: left;padding: 1em;position: relative; left: 1%; top: 1%; background-color: #82C18F;border-radius: 15px 50px;box-shadow: 5px 5px 5px black;}
+#clsCintent{font-size: 1.5em;color: black;}
+
+#picture{width: 31%;height: 94%;float: right;position: relative;left: 1%;top: 1%;}
+
+#job{width: 69%;height: 35%;float: left;position: relative;top: 2%;background-color: #60B070;box-shadow: 5px 5px 5px black;border-radius: 5px 15px 15px 15px;}
+
+#on_duty{width: 69%;height: 32%;float: left;background-color: #55AA66; position: relative;top: 3%;box-shadow: 5px 5px 5px black;border-radius: 5px 15px 15px 15px;}
+
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.wn.mapper.DesrSchoolMapper">
+ 
+ 	<!-- 查询描述信息 -->
+ 	<select id="QueryDesr" resultType="com.wn.model.DesrSchool">
+ 		select * from desrschool
+ 	</select>
+ 	
+ 	<!-- 修改描述信息 -->
+ 	<update id="UpdateDesr">
+ 		update desrschool set desr = #{desr} where id = #{id}
+ 	</update>
+ 	
+ 	<!-- 修改之前回显 -->
+ 	<select id="ShowValue">
+ 		select * from where id = #{id}
+ 	</select>
+ </mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.wn.mapper.TeacherRotaSixMapper">
+ 	<select id="find" resultType="com.wn.model.TeacherRota" parameterType="com.wn.model.Pages">
+ 		select * from teacher_rota_six limit #{startNum},#{numPerPage}
+ 	</select>
+ 	<select id="findSomeOne" resultType="com.wn.model.TeacherRota" parameterType="com.wn.model.TeacherRota">
+ 		select * from teacher_rota_six where 1 = 1
+ 			<if test="id != null">
+ 				and id = #{id}
+ 			</if>
+ 			<if test="t_name != null">
+ 				and t_name = #{t_name}
+ 			</if>
+ 			<if test="t_type != null">
+ 				and t_type = #{t_type}
+ 			</if>
+ 			<if test="t_phone != null">
+ 				and t_phone = #{t_phone}
+ 			</if>
+ 			<if test="t_img != null">
+ 				and t_day = #{t_day}
+ 			</if>
+ 	</select>
+ 	<update id="updateTeacherRota" parameterType="com.wn.model.TeacherRota">
+ 		update teacher_rota_six
+ 		<trim prefix="set" suffixOverrides=",">
+ 			<if test="t_name!=null">
+ 				t_name=#{t_name},
+ 			</if>
+ 			<if test="t_type != null">
+ 				t_type=#{t_type},
+ 			</if>
+ 			<if test="t_phone!=null">
+ 				t_phone=#{t_phone},
+ 			</if>
+ 			<if test="t_img!=null">
+ 				t_day=#{t_day},
+ 			</if>
+ 		</trim>
+ 		<where>
+ 			id = #{id}
+ 		</where>
+ 	</update>
+ 	
+ 	<insert id="insertTeacherRota" parameterType="com.wn.model.TeacherRota">
+ 		insert into teacher_rota_six (t_name,t_type,t_phone,t_day) values (#{t_name},#{t_type},#{t_phone},#{t_day})
+ 	</insert>
+ 	
+ 	<select id="totalCount" resultType="integer">
+ 		select count(id) from teacher_rota_six
+ 	</select>
+ </mapper>

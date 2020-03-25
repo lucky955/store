@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.wn.mapper.AccountMapper">
+ 	<!-- 查找所有的班级 -->
+ 	
+ 	<select id="findAccountClasses" resultType="com.wn.model.Account" >
+ 		select classes from account GROUP BY classes
+ 	</select>
+ 	
+ 	<select id="findAccount" resultType="com.wn.model.Account" >
+ 		select * from account 
+ 	</select>
+ 	<select id="findAccountOne" resultType="com.wn.model.Account" parameterType="com.wn.model.Account">
+ 		select * from account where username = #{username} and password = #{password}
+ 	</select>
+ 	<insert id="insertAccount">
+ 		insert into account (username,password,classes) values(#{username},#{password},#{classes})
+ 	</insert>
+ 	<delete id="deleteAccount">
+		delete from  account where id = #{id}	
+ 	</delete>
+ 	<update id="updateAccount" parameterType="com.wn.model.Account">
+ 		update account 
+ 			<trim prefix="set" suffixOverrides=",">
+ 				<if test="username != null">
+ 					username = #{username},
+ 				</if>
+ 				<if test="password != null">
+ 					password = #{password},
+ 				</if>
+ 				<if test="classes != null">
+ 					classes = #{classes},
+ 				</if>
+ 			</trim>
+ 			<where>
+ 				id = #{id}
+ 			</where>
+ 	</update>
+ </mapper>

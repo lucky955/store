@@ -1,0 +1,16 @@
+*{padding: 0;margin: 0;}
+body{font-size: 62.5%;background-image: url(../images/backgroud.png);color: green;}
+div{border: 1px solid white;}
+#window{width: 30%;height: 44em;float: left;left: 35%;margin-top: 3%;margin-left: 35%;}
+a{color: white;}
+.navigate{cursor: pointer;width: 49.87%;float: left;text-align: center;font-size: 2em;border-top: 0;}
+#navEnroll{border: 0;}
+#navLog{border-left: 0;}
+#head{width: 26%;height: 20%;margin: 20% 0 0 37%;border: 0;}
+.form_item{width: 86%;height: 8%;margin: 8% 0 0 7%;border-radius: 2em;background-color: white;}
+.icon{margin: 2% 0 0 6%;float: left;}
+input{height: 80%;width: 80%;float: left;margin: 0.15em 0 0 0.5em;
+background-color: transparent;font-size: 2em;border: 0;outline: none;}
+#btn{width: 86%;height: 8%;margin: 5% 0 0 7%;border-radius: 2em;}
+#btn button{width: 100%;height: 100%;border-radius: 2em;background-color: white;
+outline: none;border: 0;cursor: pointer;border-radius: 2em;color: green;}

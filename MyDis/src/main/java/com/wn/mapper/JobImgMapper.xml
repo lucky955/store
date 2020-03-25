@@ -1,0 +1,39 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置对应的mapper映射文件 -->
+<mapper namespace="com.wn.mapper.JobImgMapper">
+    
+    <select id="totalCount" resultType="integer">
+ 		select count(id) from job_img
+ 	</select>
+ 	<!-- 无条件查询所有 -->
+ 	<select id="findAll" resultType="com.wn.model.JobImg">
+ 		select * from job_img  order by id desc limit #{page.startNum},#{page.numPerPage}
+ 	</select>
+ 	<insert id="insertJobImg" parameterType="com.wn.model.JobImg">
+   		insert into job_img (s_img,s_name)
+   		values
+   		(#{s_img},#{s_name})
+    </insert>
+    <delete id="deleJobImg" >
+    	delete from job_img where id=#{id}
+    </delete>
+    
+    <update id="updateJobImg" parameterType="com.wn.model.JobImg" >
+ 		update job_img
+ 		<trim prefix="set" suffixOverrides=",">
+ 			<if test="s_id !=null">
+ 				s_id=#{s_id},
+ 			</if>
+ 			<if test="s_name != null">
+ 				s_name=#{s_name},
+ 			</if>
+ 			<if test="s_img !=null">
+ 				s_img=#{s_img},
+ 			</if>
+ 		</trim>
+ 		<where>
+ 			id = #{id}
+ 		</where>
+ 	</update>
+    
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.wn.mapper.ActivityMapper">
+ 	<select id="all" resultType="com.wn.model.Activity">
+ 		select * from activity
+ 	</select>
+ 
+ 	<select id="find" resultType="com.wn.model.Activity" parameterType="com.wn.model.Pages">
+ 		select * from activity limit #{startNum},#{numPerPage}
+ 	</select>
+ 	<select id="findByCondition" resultType="com.wn.model.Activity" parameterType="com.wn.model.Activity">
+ 		select * from activity where 1 = 1
+ 			<if test="id != null">
+ 				and id = #{id}
+ 			</if>
+ 			<if test="a_name != null">
+ 				and a_name = #{a_name}
+ 			</if>
+ 			<if test="a_class != null">
+ 				and a_class = #{a_class}
+ 			</if>
+ 			<if test="datetime != null">
+ 				and datetime = #{datetime}
+ 			</if>
+ 	</select>
+ 	<update id="updateActive" parameterType="com.wn.model.Activity">
+ 	update activity
+ 		<trim prefix="set" suffixOverrides=",">
+ 			<if test="a_name !=null">
+ 				a_name=#{a_name},
+ 			</if>
+ 			<if test="t_type != null">
+ 				t_type=#{t_type},
+ 			</if>
+ 			<if test="a_class!=null">
+ 				a_class=#{a_class},
+ 			</if>
+ 			<if test="t_img!=null">
+ 				datetime=#{datetime},
+ 			</if>
+ 		</trim>
+ 		<where>
+ 			id = #{id}
+ 		</where>
+ 	</update>
+ 	<insert id="insertactivity" parameterType="com.wn.model.Activity">
+ 		insert into activity (a_name,t_type,a_class,datetime) values(#{a_name},#{t_type},#{a_class},#{datetime})
+ 	</insert>
+ 	
+ 	<select id="totalCount" resultType="integer">
+ 		select count(id) from activity
+ 	</select>
+ </mapper>

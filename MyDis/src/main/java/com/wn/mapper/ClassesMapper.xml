@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.wn.mapper.ClassesMapper">
+ 	<select id="all" resultType="com.wn.model.Classes">
+ 		select * from class
+ 	</select>
+ 
+ 	<select id="find" resultType="com.wn.model.Classes">
+ 		select * from class where 1 = 1 
+ 		<if test="type != null">
+	 		and c_type=#{type} 
+ 		</if>
+ 		limit #{page.startNum},#{page.numPerPage} 
+ 	</select>
+ 	
+ 	<select id="findByCondition" resultType="com.wn.model.Classes" parameterType="com.wn.model.Classes">
+ 		select * from class where 1 = 1
+ 			<if test="id != null">
+ 				and id = #{id}
+ 			</if>
+ 			<if test="c_class != null">
+ 				and c_class = #{c_class}
+ 			</if>
+ 			<if test="c_teacher != null">
+ 				and c_teacher = #{c_teacher}
+ 			</if>
+ 			<if test="c_type != null">
+ 				and c_type = #{c_type}
+ 			</if>
+ 			<if test="c_number != null">
+ 				and c_number = #{c_number}
+ 			</if>
+ 			<if test="c_progress != null">
+ 				and c_progress = #{c_progress}
+ 			</if>
+ 	</select>
+ 	
+ 	<update id="updateClasses" parameterType="com.wn.model.Classes">
+ 	update class 
+ 		<trim prefix="set" suffixOverrides=",">
+ 			<if test="c_class != null">
+ 				c_class = #{c_class},
+ 			</if>
+ 			<if test="c_teacher != null">
+ 				c_teacher = #{c_teacher},
+ 			</if>
+ 			<if test="c_type != null">
+ 				c_type = #{c_type},
+ 			</if>
+ 			<if test="c_number != null">
+ 				c_number = #{c_number},
+ 			</if>
+ 			<if test="c_progress != null">
+ 				c_progress = #{c_progress},
+ 			</if>
+ 		</trim>
+ 		<where>
+ 			id = #{id}
+ 		</where>
+ 	</update>
+ 	<insert id="insertClasses" parameterType="com.wn.model.Classes">
+ 		insert into class (c_class,c_teacher,c_type,c_number,c_progress) values(#{c_class},#{c_teacher},#{c_type},#{c_number},#{c_progress})
+ 	</insert>
+ 	
+ 	<select id="totalCount" resultType="integer">
+ 		select count(id) from class where 1=1
+ 		<if test="type != null">
+ 			and c_type = #{type}
+ 		</if>
+ 	</select>
+ 	
+ 	<select id="AllClass" resultType="com.wn.model.Teacher" >
+ 		select * from teacher where t_type=#{type}
+ 	</select>
+ 	
+ </mapper>

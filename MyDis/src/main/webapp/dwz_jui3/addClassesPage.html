@@ -1,0 +1,41 @@
+
+<div class="pageContent">
+	<form method="post" action="../addClasses" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<div class="pageFormContent" layoutH="56">
+			<dl class="nowrap">
+				<dt>类型：</dt>
+				<dd>
+					<input name="district.id" value="" type="hidden" /> <input
+						name="district.type" class="required" type="text" readonly /> <a
+						class="btnLook" href="../getclasses" lookupGroup="district">查找带回</a>
+				</dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>教师姓名：</dt>
+				<dd>
+					<input class="required" name="district.name" type="text" readonly />
+				</dd>
+			</dl>
+			<p>
+				<label>班级</label>
+				<input name="c_class" class="required" type="text" size="30" />
+			</p>
+			<p>
+				<label>人数</label>
+				<input name="c_number" class="required" type="text" size="30" />
+			</p>
+			<p>
+				<label>进度</label>
+				<input name="c_progress" class="required" type="text" size="30" />
+			</p>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>

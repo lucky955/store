@@ -1,0 +1,64 @@
+*{margin: 0;padding: 0;color: black;overflow: hidden;}
+#main{position: relative;width: 100%;/* background-color: #2B2B2B; */}
+#top_left{
+	width: 20%;height: 10%;float: left;float: left;
+	font-size: 3em;text-align: center;
+}
+#top_right{
+	width: 60%;height: 10%;float: left;
+	font-size: 3em;
+	box-shadow: -5px 0 5px black;
+	/* background-color: #222222; */
+	line-height: 2.5em;
+	}
+#times{
+	width: 20%;height: 10%;float: left;float: left;
+	font-size: 3em;text-align: center;box-shadow: -5px 0 5px black;
+	/* background-color: #1A1A1A; */
+}
+
+#left{  
+	width: 20%;height: 90%;float: left;
+	font-size: 3em;text-align: center;box-shadow: 0 -5px 5px black;
+	/* background-color: #222222; */
+}
+#left_title{box-shadow: 0 5px 5px black;height: 5%;}
+.on_duty {
+	float: left;
+	width: 95%;
+	height: auto;
+	margin: 0.2em 0 0 0.2em;
+	box-shadow: 0 5px 5px black;
+	text-align: center;
+	background-size: 100% 100%
+}
+.container {padding: 10px;}
+#plan{width:100%;box-shadow: 0 5px 5px black;}
+._plan{width:48%;box-shadow: 5 5px 5px black;float: left;}
+
+#center{
+	width: 80%;height: 90%;float: left;
+	background-size: 100% 100%;
+}
+#title{
+	width: 100%;height: 5%;/* background-color: #111111; */
+	box-shadow: 0 -5px 5px black;
+}
+.tl{float: left;font-size: 3em;text-align: center;height:auto;}
+.change{background-color: gray;}
+
+.hide{display: none;}
+#content div:first-Child{display:block;}
+ 
+#job{width: 100%;height: 100%;float: left;}
+._job{width:20%;height: 30%;float: left}
+.describe{width:80%;height: 30%;}
+
+#activity{width: 100%;height: 100%;float: left;}
+.activity_img{width:45%;float: left;margin:4em 0 0 3.5em;border: 1px white solid;}
+.act_title{font-size: 2em;text-align: center;}
+
+#classes{width: 100%;height: 100%;float: left;padding:20}
+#clsmsg{text-align: center;align-content: center;margin: auto;font-size: 30px;margin-top:40px}
+td{padding: 20px}
+

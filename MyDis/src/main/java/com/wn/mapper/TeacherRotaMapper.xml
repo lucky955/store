@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.wn.mapper.TeacherRotaMapper">
+ 	<select id="find" resultType="com.wn.model.TeacherRota" parameterType="com.wn.model.Pages">
+ 		select * from teacher_rota limit #{startNum},#{numPerPage}
+ 	</select>
+ 	
+ 	<select id="FindInfor" resultType="com.wn.model.TeacherRota">
+ 		select * from teacher_rota where id = #{id}
+ 	</select> 
+ 	
+ 	<update id="UpdateInfor" parameterType="com.wn.model.TeacherRota">
+ 		update teacher_rota set t_name = #{t_name},t_phone=#{t_phone},t_day=#{t_day} where id = #{id}
+ 	</update>
+ 	<insert id="insertTeacherRota" parameterType="com.wn.model.TeacherRota">
+ 		insert into teacher_rota (t_name,t_phone,t_day) values(#{t_name},#{t_phone},#{t_day})
+ 	</insert>
+ 	
+ 	
+ 	<delete id="DeleteInfor" >
+ 		delete from teacher_rota where id = #{id}
+ 	</delete>
+ 	
+ 	<select id="totalCount" resultType="integer">
+ 		select count(id) from teacher_rota
+ 	</select>
+ 	
+ 	<select id="QueryOne" resultType="com.wn.model.TeacherRota">
+ 		select * from teacher_rota where t_day = #{t_day}
+ 	</select>
+ 	
+ 	<select id="QueryType" resultType="com.wn.model.Teacher">
+ 		select * from teacher where t_name = #{t_name}
+ 	</select>
+ </mapper>
